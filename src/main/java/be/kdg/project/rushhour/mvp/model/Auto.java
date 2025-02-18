@@ -26,16 +26,18 @@ public class Auto {
 
         // Plaats de rechthoeken van de auto op het grid
         for (int i = 0; i < lengte; i++) {
-            Rectangle rect;
+            Rectangle rect = new Rectangle(30, 30); // Maak een vakje aan
+            rect.setFill(kleur); // Stel de kleur in (bv. rood voor de rode auto)
+            rect.setStroke(Color.BLACK); // Zwarte rand om de auto goed te zien
+
             if (isHorizontaal) {
-                rect = new Rectangle(30, 30, kleur); // Horizontale rechthoek
-                grid.add(rect, xPos + i, yPos); // Voeg toe aan het grid
+                grid.add(rect, xPos + i, yPos); // Voeg toe aan het grid (horizontaal)
             } else {
-                rect = new Rectangle(30, 30, kleur); // Verticale rechthoek
-                grid.add(rect, xPos, yPos + i); // Voeg toe aan het grid
+                grid.add(rect, xPos, yPos + i); // Voeg toe aan het grid (verticaal)
             }
         }
     }
+
 
     // Setters en getters voor de posities en andere eigenschappen
     public void setxPos(int xPos) {

@@ -26,7 +26,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-
-
-//joehopelijkziegijdees
-// dees moet ma werken
