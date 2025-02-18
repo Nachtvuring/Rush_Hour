@@ -1,6 +1,7 @@
 package be.kdg.project.rushhour.mvp.view.gameScreen;
 
 import be.kdg.project.rushhour.mvp.model.Auto;
+import be.kdg.project.rushhour.mvp.model.Game;
 import be.kdg.project.rushhour.mvp.view.PopupWindow;
 import be.kdg.project.rushhour.mvp.view.SceneManager;
 import be.kdg.project.rushhour.mvp.view.beginScreen.View;

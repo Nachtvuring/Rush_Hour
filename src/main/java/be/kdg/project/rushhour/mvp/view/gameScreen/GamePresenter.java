@@ -22,7 +22,7 @@ public class GamePresenter {
         autos.add(new Auto(2, 0, 2, false, Color.BLUE)); // Blauwe vrachtwagen
     }
 
-    private void updateView() {
+    void updateView() {
         for (Auto auto : autos) {
             view.plaatsAuto(auto);
         }
