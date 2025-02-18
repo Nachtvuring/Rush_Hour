@@ -11,40 +11,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 public class GameView extends VBox {
     private SceneManager sceneManager;
+    private GridPane speelveld;
 
     public GameView(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
+        this.speelveld = createGrid();
+        new GamePresenter(this);
 
-        // Maak het grid voor het speelveld
-        GridPane grid = new GridPane();
-        grid.setMaxWidth(300);
-        grid.setMaxHeight(300);
-        grid.setHgap(0);
-        grid.setVgap(0);
-        grid.setPadding(new Insets(0, 0, 0, 0));
-        grid.setAlignment(Pos.CENTER);
-        grid.setStyle("-fx-border-color: black; -fx-background-color: lightgray; -fx-border-width: 2px;");
-        grid.setGridLinesVisible(true);
-
-        // Voeg de rijen en kolommen toe aan het grid
-        for (int i = 0; i < 6; i++) {
-            ColumnConstraints column = new ColumnConstraints();
-            column.setPercentWidth(100.0 / 6);
-            grid.getColumnConstraints().add(column);
-
-            RowConstraints row = new RowConstraints();
-            row.setPercentHeight(100.0 / 6);
-            grid.getRowConstraints().add(row);
-        }
-
-        // Maak een nieuwe Auto (bijvoorbeeld een horizontale auto van lengte 2)
-        Auto auto = new Auto(0, 2, 2, true, Color.RED); // Positie (0, 0), lengte 2, horizontaal
-        auto.plaatsAutoInGrid(grid); // Plaats de auto op het grid
-
-        // UI-elementen zoals score en knoppen
         Label highScore = new Label("High Score");
         Label scoreLabel = new Label("Score");
         Button testButton = new Button("Test");
@@ -52,36 +29,50 @@ public class GameView extends VBox {
         Button backButton = new Button("Quit");
         backButton.setOnAction(event -> goToMenu());
 
-        grid.setAlignment(Pos.CENTER);
-
-        BorderPane.setAlignment(highScore, Pos.TOP_LEFT);
-        BorderPane.setMargin(highScore, new Insets(10, 0, 0, 10));
-
-        BorderPane.setAlignment(scoreLabel, Pos.TOP_CENTER);
-
-        backButton.setOnAction(event -> goToMenu());
-        BorderPane.setAlignment(backButton, Pos.TOP_RIGHT);
-        BorderPane.setMargin(backButton, new Insets(10, 10, 0, 0));
-
-        HBox topSection = new HBox();
-        topSection.setPadding(new Insets(10, 10, 10, 10));
-        topSection.setSpacing(200);
+        HBox topSection = new HBox(200, highScore, scoreLabel, backButton);
+        topSection.setPadding(new Insets(10));
         topSection.setAlignment(Pos.TOP_CENTER);
-        topSection.getChildren().addAll(highScore, scoreLabel, backButton);
 
         BorderPane mainLayout = new BorderPane();
         mainLayout.setTop(topSection);
-        mainLayout.setCenter(grid);
+        mainLayout.setCenter(speelveld);
         mainLayout.setBottom(testButton);
 
         this.getChildren().addAll(mainLayout);
         this.setAlignment(Pos.CENTER);
-        grid.setPrefSize(300, 300);
+    }
+
+    private GridPane createGrid() {
+        GridPane grid = new GridPane();
+        grid.setMaxHeight(300);
+        grid.setMaxWidth(300);
+        grid.setStyle("-fx-border-color: black; -fx-background-color: lightgray; -fx-border-width: 2px;");
+        grid.setGridLinesVisible(true);
+
+        for (int i = 0; i < 6; i++) {
+            grid.getColumnConstraints().add(new ColumnConstraints(50));
+            grid.getRowConstraints().add(new RowConstraints(50));
+        }
+        return grid;
+    }
+
+    public void plaatsAuto(Auto auto) {
+        for (int i = 0; i < auto.getLengte(); i++) {
+            Rectangle rect = new Rectangle(50, 50, auto.getKleur());
+            if (auto.isHorizontaal()) {
+                speelveld.add(rect, auto.getxPos() + i, auto.getyPos());
+            } else {
+                speelveld.add(rect, auto.getxPos(), auto.getyPos() + i);
+            }
+        }
+        new AutoHandler(speelveld, auto);
+    }
+
+    public GridPane getSpeelveld() {
+        return speelveld;
     }
 
     private void goToMenu() {
-        View menuView = new View(sceneManager);
-        Scene menuScene = new Scene(menuView, 800, 600);
-        sceneManager.setScene(menuScene);
+        sceneManager.setScene(new Scene(new View(sceneManager), 800, 600));
     }
 }

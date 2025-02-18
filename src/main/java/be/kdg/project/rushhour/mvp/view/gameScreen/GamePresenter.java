@@ -1,15 +1,30 @@
 package be.kdg.project.rushhour.mvp.view.gameScreen;
-import javafx.application.Application;
-import javafx.stage.Stage;
 
-public class GamePresenter extends Application {
+import be.kdg.project.rushhour.mvp.model.Auto;
+import javafx.scene.paint.Color;
 
-    public static void main(String[] args) {
-        launch(args);
+import java.util.ArrayList;
+import java.util.List;
+
+public class GamePresenter {
+    private GameView view;
+    private List<Auto> autos;
+
+    public GamePresenter(GameView view) {
+        this.view = view;
+        this.autos = new ArrayList<>();
+        initializeAutos();
+        updateView();
     }
 
-    @Override
-    public void start(Stage primaryStage) {
-        
+    private void initializeAutos() {
+        autos.add(new Auto(0, 2, 2, true, Color.RED)); // Rode auto
+        autos.add(new Auto(2, 0, 2, false, Color.BLUE)); // Blauwe vrachtwagen
+    }
+
+    private void updateView() {
+        for (Auto auto : autos) {
+            view.plaatsAuto(auto);
+        }
     }
 }
