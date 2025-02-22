@@ -18,13 +18,20 @@ public class GamePresenter {
     }
 
     private void initializeAutos() {
-        autos.add(new Auto(0, 2, 2, true, Color.RED)); // Rode auto
-        autos.add(new Auto(2, 0, 2, false, Color.BLUE)); // Blauwe vrachtwagen
+        Auto rodeAuto = new Auto(0, 2, 2, true, Color.RED); // Rode auto
+        Auto blauweAuto = new Auto(2, 0, 2, false, Color.BLUE); // Blauwe auto
+
+        autos.add(rodeAuto);
+        autos.add(blauweAuto);
+
+        for (Auto auto : autos) {
+            new AutoHandler(view.getSpeelveld(), auto, this); // Koppel een AutoHandler aan elke auto
+        }
+
+        updateView();
     }
 
-    void updateView() {
-        for (Auto auto : autos) {
-            view.plaatsAuto(auto);
-        }
+    public void updateView() {
+        view.updateSpeelveld(autos); // Update het hele speelveld
     }
 }

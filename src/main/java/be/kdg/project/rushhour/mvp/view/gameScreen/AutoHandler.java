@@ -1,7 +1,6 @@
 package be.kdg.project.rushhour.mvp.view.gameScreen;
 
 import be.kdg.project.rushhour.mvp.model.Auto;
-import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.Node;
@@ -13,24 +12,25 @@ public class AutoHandler {
     private GridPane speelveld;
     private Auto auto;
     private List<Rectangle> rects;
+    private GamePresenter presenter;
 
-    public AutoHandler(GridPane speelveld, Auto auto) {
+    public AutoHandler(GridPane speelveld, Auto auto, GamePresenter presenter) {
         this.speelveld = speelveld;
         this.auto = auto;
+        this.presenter = presenter;
         this.rects = new ArrayList<>();
+        speelveld.setOnMouseClicked(this::handleMouseClick);
+    }
 
-        tekenAuto();
+    private void handleMouseClick(MouseEvent event) {
+        int clickedX = (int) event.getX() / 50;
+        int clickedY = (int) event.getY() / 50;
 
-        speelveld.setOnMouseClicked(event -> {
-            int clickedX = (int) event.getX() / 50;
-            int clickedY = (int) event.getY() / 50;
-
-            if (isClickedOnFront(clickedX, clickedY)) {
-                moveAutoForward();
-            } else if (isClickedOnBack(clickedX, clickedY)) {
-                moveAutoBackward();
-            }
-        });
+        if (isClickedOnFront(clickedX, clickedY)) {
+            moveAutoForward();
+        } else if (isClickedOnBack(clickedX, clickedY)) {
+            moveAutoBackward();
+        }
     }
 
     private void tekenAuto() {
@@ -64,14 +64,14 @@ public class AutoHandler {
     private void moveAutoForward() {
         if (auto.canMoveForward(6)) {
             auto.moveForward();
-            tekenAuto();
+            presenter.updateView(); // Update het hele speelveld via de GamePresenter
         }
     }
 
     private void moveAutoBackward() {
         if (auto.canMoveBackward()) {
             auto.moveBackward();
-            tekenAuto();
+            presenter.updateView(); // Update het hele speelveld via de GamePresenter
         }
     }
 
