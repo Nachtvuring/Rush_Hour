@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57321d53-54a1-478b-ba35-72fc5442fed8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rush_Hour" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/console/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/console/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/console/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/console/Car.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/console/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/console/Color.java" afterDir="false" />
@@ -35,35 +35,11 @@
       <change beforePath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/mvp/view/gameScreen/GamePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/mvp/view/gameScreen/GamePresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/mvp/view/gameScreen/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/mvp/view/gameScreen/GameView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rush_Hour/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/console/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/console/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/console/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/console/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/console/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/console/Color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/console/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/console/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/console/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/console/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/console/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/console/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/console/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/console/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/console/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/console/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/console/difficultyLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/console/difficultyLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/console/typeCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/console/typeCar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/model/Auto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Auto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/model/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/model/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/model/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/model/difficultyLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/difficultyLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/model/typeCar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/typeCar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/view/PopupWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/PopupWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/view/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/SceneManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/view/beginScreen/Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/beginScreen/Presenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/view/beginScreen/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/beginScreen/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/view/gameScreen/AutoHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/AutoHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/view/gameScreen/GamePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GamePresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/rushhour/mvp/view/gameScreen/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/PopupWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/PopupWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/SceneManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GamePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GamePresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GameView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +118,7 @@
       <option name="presentableId" value="Default" />
       <updated>1740392402637</updated>
       <workItem from="1740392404317" duration="1003000" />
-      <workItem from="1740393435468" duration="8017000" />
+      <workItem from="1740393435468" duration="11541000" />
     </task>
     <servers />
   </component>

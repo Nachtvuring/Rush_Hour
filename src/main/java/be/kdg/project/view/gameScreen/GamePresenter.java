@@ -22,7 +22,6 @@ public class GamePresenter {
         return game.isMovePossible(auto, forward);
     }
 
-    // Add the missing updateView method
     public void updateView() {
         view.updateSpeelveld(game.getAutos());
     }
@@ -32,12 +31,11 @@ public class GamePresenter {
                 view.getSceneManager().setScene(new Scene(new View(view.getSceneManager()), 800, 600)));
 
         view.getTestButton().setOnAction(event ->
-                PopupWindow.showPopup("Belangrijke melding", "Dit is een custom popup!"));
+                PopupWindow.showPopup("Belangrijke melding", "Dit is een custom popup!", view.getSceneManager()));
 
         view.getSpeelveld().setOnMouseClicked(this::handleGridClick);
     }
 
-    // Remove the duplicate handleGridClick method and keep only this one
     private void handleGridClick(MouseEvent event) {
         int clickX = (int) (event.getX() / 50);
         int clickY = (int) (event.getY() / 50);
@@ -69,7 +67,11 @@ public class GamePresenter {
     private void moveAuto(Auto auto, boolean clickedFront) {
         if (game.isMovePossible(auto, clickedFront)) {
             auto.move(clickedFront);
+            updateView();
+
+            if (game.checkWin()) {
+                PopupWindow.showPopup("Gefeliciteerd!", "Je hebt het level gehaald!", view.getSceneManager());
+            }
         }
-        updateView();
     }
 }

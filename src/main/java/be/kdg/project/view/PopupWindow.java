@@ -1,6 +1,7 @@
 package be.kdg.project.view;
 
 import javafx.geometry.Pos;
+import be.kdg.project.view.beginScreen.View;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,23 +10,39 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class PopupWindow {
+    private static SceneManager sceneManager;
 
-    public static void showPopup(String title, String message) {
+    public static void setSceneManager(SceneManager manager) {
+        sceneManager = manager;
+    }
+
+    public static void showPopup(String title, String message, SceneManager manager) {
+        setSceneManager(manager);
         Stage popupStage = new Stage();
-        popupStage.initModality(Modality.APPLICATION_MODAL); // Blokkeert interactie met hoofdvenster
+        popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.setTitle(title);
         popupStage.setMinWidth(250);
 
         Label label = new Label(message);
-        Button closeButton = new Button("Sluiten");
-        closeButton.setOnAction(event -> popupStage.close());
+        Button closeButton = new Button("Back to menu");
+        Button playAgainButton = new Button("Play again");
+        closeButton.setOnAction(e -> {
+            popupStage.close();
+            if (sceneManager != null) {
+                sceneManager.setScene(new Scene(new View(sceneManager), 800, 600));
+            }
+        });
+
+        playAgainButton.setOnAction(e -> {
+            popupStage.close();
+        });
 
         VBox layout = new VBox(10);
-        layout.getChildren().addAll(label, closeButton);
+        layout.getChildren().addAll(label, playAgainButton, closeButton);
         layout.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(layout, 300, 150);
         popupStage.setScene(scene);
-        popupStage.showAndWait(); // Wacht tot popup gesloten wordt
+        popupStage.showAndWait();
     }
 }

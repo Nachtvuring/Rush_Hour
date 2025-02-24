@@ -36,7 +36,7 @@ public class GameView extends VBox {
     }
 
     private void initializeLayout() {
-        testButton.setOnAction(e -> PopupWindow.showPopup("Belangrijke melding", "Dit is een custom popup!"));
+        testButton.setOnAction(e -> PopupWindow.showPopup("Test", "This is a test popup", sceneManager));
         backButton.setOnAction(event -> goToMenu());
 
         HBox topSection = new HBox(200, highScore, scoreLabel, backButton);

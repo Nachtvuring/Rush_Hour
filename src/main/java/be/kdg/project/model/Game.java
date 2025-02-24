@@ -1,5 +1,6 @@
 package be.kdg.project.model;
 
+import be.kdg.project.view.PopupWindow;
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +15,15 @@ public class Game {
     }
 
     private void initializeAutos() {
-        // Red car is the target car (must reach exit)
-        Auto rodeAuto = new Auto(1, 2, 2, true, Color.RED);
-        Auto blauweAuto = new Auto(0, 0, 2, false, Color.BLUE);
+        Auto rodeAuto = new Auto(0, 2, 2, true, Color.RED);
+        Auto blauweAuto = new Auto(4, 0, 2, false, Color.BLUE);
         Auto groeneAuto = new Auto(3, 3, 3, true, Color.GREEN);
+        Auto geleAuto = new Auto(0, 4, 2, false, Color.YELLOW);
 
         autos.add(rodeAuto);
         autos.add(blauweAuto);
         autos.add(groeneAuto);
+        autos.add(geleAuto);
     }
 
     public List<Auto> getAutos() {
@@ -67,5 +69,14 @@ public class Game {
 
         return !(movingEndX < otherStartX || movingStartX > otherEndX ||
                 movingEndY < otherStartY || movingStartY > otherEndY);
+    }
+
+    public boolean checkWin() {
+        for (Auto auto : autos) {
+            if (auto.getColor() == Color.RED) {
+                return auto.getxPos() == 4 && auto.getyPos() == 2;
+            }
+        }
+        return false;
     }
 }

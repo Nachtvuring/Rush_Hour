@@ -1,21 +1,20 @@
 package be.kdg.project.view;
 
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.Scene;
 
 public class SceneManager {
-    private Stage stage;
+    private final Stage mainStage;
 
-    public SceneManager(Stage stage) {
-        this.stage = stage;
+    public SceneManager(Stage mainStage) {
+        this.mainStage = mainStage;
+    }
+
+    public Stage getMainStage() {
+        return mainStage;
     }
 
     public void setScene(Scene scene) {
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public Stage getStage() {
-        return stage;
+        mainStage.setScene(scene);
     }
 }
