@@ -1,6 +1,7 @@
 package be.kdg.project.rushhour.mvp.view.gameScreen;
 
 import be.kdg.project.rushhour.mvp.model.Auto;
+import be.kdg.project.rushhour.mvp.model.Game;
 import be.kdg.project.rushhour.mvp.view.PopupWindow;
 import be.kdg.project.rushhour.mvp.view.SceneManager;
 import be.kdg.project.rushhour.mvp.view.beginScreen.View;
@@ -12,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+
+import java.util.List;
 
 public class GameView extends VBox {
     private SceneManager sceneManager;
@@ -56,6 +59,13 @@ public class GameView extends VBox {
         return grid;
     }
 
+    public void updateSpeelveld(List<Auto> autos) {
+        speelveld.getChildren().clear(); // Maak het speelveld leeg
+        for (Auto auto : autos) {
+            plaatsAuto(auto); // Teken elke auto opnieuw
+        }
+    }
+
     public void plaatsAuto(Auto auto) {
         for (int i = 0; i < auto.getLengte(); i++) {
             Rectangle rect = new Rectangle(50, 50, auto.getKleur());
@@ -65,7 +75,6 @@ public class GameView extends VBox {
                 speelveld.add(rect, auto.getxPos(), auto.getyPos() + i);
             }
         }
-        new AutoHandler(speelveld, auto);
     }
 
     public GridPane getSpeelveld() {
