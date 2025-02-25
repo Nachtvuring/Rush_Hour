@@ -1,7 +1,9 @@
 package be.kdg.project.model;
 
-import be.kdg.project.view.PopupWindow;
 import javafx.scene.paint.Color;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,19 +13,38 @@ public class Game {
 
     public Game() {
         this.autos = new ArrayList<>();
-        initializeAutos();
+        loadAutosFromFile("levels.txt");
     }
 
-    private void initializeAutos() {
-        Auto rodeAuto = new Auto(0, 2, 2, true, Color.RED);
-        Auto blauweAuto = new Auto(4, 0, 2, false, Color.BLUE);
-        Auto groeneAuto = new Auto(3, 3, 3, true, Color.GREEN);
-        Auto geleAuto = new Auto(0, 4, 2, false, Color.YELLOW);
+    private void loadAutosFromFile(String filename) {
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream(filename);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
 
-        autos.add(rodeAuto);
-        autos.add(blauweAuto);
-        autos.add(groeneAuto);
-        autos.add(geleAuto);
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("#") || line.trim().isEmpty()) {
+                    continue;
+                }
+
+                String[] parts = line.split(",");
+                if (parts.length == 5) {
+                    int xPos = Integer.parseInt(parts[0].trim());
+                    int yPos = Integer.parseInt(parts[1].trim());
+                    int length = Integer.parseInt(parts[2].trim());
+                    boolean isHorizontal = Boolean.parseBoolean(parts[3].trim());
+                    Color color = Color.valueOf(parts[4].trim());
+
+                    autos.add(new Auto(xPos, yPos, length, isHorizontal, color));
+                }
+            }
+
+            if (autos.isEmpty()) {
+                throw new RuntimeException("No autos loaded from file");
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to load autos from file: " + e.getMessage());
+        }
     }
 
     public List<Auto> getAutos() {
