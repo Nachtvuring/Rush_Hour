@@ -8,22 +8,20 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 
 public class GamePresenter {
-    private final GameView view;
     private final Game game;
+    private final GameView view;
+    private Auto selectedAuto;
 
     public GamePresenter(GameView view) {
-        this.view = view;
         this.game = new Game();
+        this.view = view;
+        this.view.updateSpeelveld(game.getAutos());
+        updateScore();
         attachEventHandlers();
-        updateView();
     }
 
-    public boolean isMovePossible(Auto auto, boolean forward) {
-        return game.isMovePossible(auto, forward);
-    }
-
-    public void updateView() {
-        view.updateSpeelveld(game.getAutos());
+    private void updateScore() {
+        view.getScoreLabel().setText("Score: " + game.getScore());
     }
 
     private void attachEventHandlers() {
@@ -64,11 +62,25 @@ public class GamePresenter {
     private void moveAuto(Auto auto, boolean clickedFront) {
         if (game.isMovePossible(auto, clickedFront)) {
             auto.move(clickedFront);
+            game.decrementScore();
+            updateScore();
             updateView();
 
             if (game.checkWin()) {
-                PopupWindow.showPopup("Gefeliciteerd!", "Je hebt het level gehaald!", view.getSceneManager());
+                PopupWindow.showPopup("Congratulations!", String.valueOf(game.getScore()), view.getSceneManager());
             }
         }
+    }
+
+    public void refreshView() {
+        updateView();
+    }
+
+    private void updateView() {
+        view.updateSpeelveld(game.getAutos());
+    }
+
+    public boolean isMovePossible(Auto auto, boolean forward) {
+        return game.isMovePossible(auto, forward);
     }
 }

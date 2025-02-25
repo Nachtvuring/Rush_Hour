@@ -26,6 +26,6 @@ public class AutoHandler {
         } else if (presenter.isMovePossible(auto, false)) {
             auto.move(false);
         }
-        presenter.updateView();
+        presenter.refreshView();
     }
 }

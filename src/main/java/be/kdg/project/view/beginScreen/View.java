@@ -3,8 +3,8 @@ package be.kdg.project.view.beginScreen;
 import be.kdg.project.view.SceneManager;
 import be.kdg.project.view.gameScreen.GamePresenter;
 import be.kdg.project.view.gameScreen.GameView;
-import javafx.geometry.Pos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 public class View extends BorderPane {
     private final SceneManager sceneManager;
     private static String selectedDifficulty = "Beginner";
+    private static String playerName = "Player";
 
     private Button beginnerButton;
     private Button intermediateButton;
@@ -36,6 +37,8 @@ public class View extends BorderPane {
         textField.setPromptText("Player name");
         textField.setMaxWidth(200);
         textField.setAlignment(Pos.CENTER);
+        textField.textProperty().addListener((observable, oldValue, newValue) ->
+                playerName = newValue.isEmpty() ? "Player" : newValue);
 
         beginnerButton = new Button("Beginner");
         intermediateButton = new Button("Intermediate");
@@ -100,6 +103,10 @@ public class View extends BorderPane {
 
     public static ChoiceBox<Integer> getChoiceBox() {
         return choiceBox;
+    }
+
+    public static String getPlayerName() {
+        return playerName;
     }
 
     public TextField getTextField() {

@@ -16,16 +16,20 @@ public class PopupWindow {
         sceneManager = manager;
     }
 
-    public static void showPopup(String title, String message, SceneManager manager) {
+    public static void showPopup(String title, String score, SceneManager manager) {
         setSceneManager(manager);
         Stage popupStage = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.setTitle(title);
         popupStage.setMinWidth(250);
 
-        Label label = new Label(message);
+        String playerName = View.getPlayerName();
+        Label label = new Label(String.format("Congratulations %s!\nYou got a score of %s points",
+                playerName, score));
+
         Button closeButton = new Button("Back to menu");
         Button playAgainButton = new Button("Play again");
+
         closeButton.setOnAction(e -> {
             popupStage.close();
             if (sceneManager != null) {

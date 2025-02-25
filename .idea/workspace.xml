@@ -5,18 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57321d53-54a1-478b-ba35-72fc5442fed8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/advancedLevel1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/advancedLevel2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/advancedLevel3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/easyLevel1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/easyLevel2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/easyLevel3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/expertLevel1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/expertLevel2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/expertLevel3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/intermediateLevel1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/intermediateLevel2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/intermediateLevel3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rush_Hour" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/console/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/console/Board.java" afterDir="false" />
@@ -48,10 +36,10 @@
       <change beforePath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/mvp/view/gameScreen/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/mvp/view/gameScreen/GameView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rush_Hour/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/PopupWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/PopupWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/beginScreen/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/beginScreen/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/AutoHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/AutoHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GamePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GamePresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/levels.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +118,7 @@
       <option name="presentableId" value="Default" />
       <updated>1740392402637</updated>
       <workItem from="1740392404317" duration="1003000" />
-      <workItem from="1740393435468" duration="19576000" />
+      <workItem from="1740393435468" duration="21160000" />
     </task>
     <servers />
   </component>

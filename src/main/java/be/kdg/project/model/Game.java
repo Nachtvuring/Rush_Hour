@@ -14,9 +14,11 @@ import static java.text.DateFormat.MEDIUM;
 public class Game {
     private final List<Auto> autos;
     private final int gridSize = 6;
+    private int score;
 
     public Game() {
         this.autos = new ArrayList<>();
+        this.score = 2000;
         if (View.getSelectedDifficulty().equals("Beginner")) {
             int selectedLevel = View.getChoiceBox().getValue();
             switch (selectedLevel) {
@@ -51,6 +53,15 @@ public class Game {
             }
         }
     }
+
+    public void decrementScore() {
+        this.score = Math.max(0, this.score - 100);
+    }
+
+    public int getScore() {
+        return score;
+    }
+
 
     private void loadAutosFromFile(String filename) {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream(filename);
