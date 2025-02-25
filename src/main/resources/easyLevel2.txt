@@ -1,0 +1,8 @@
+# easy level 2
+
+0,2,2,true,RED
+0,0,2,false,WHITE
+1,0,2,false,YELLOW
+4,0,3,false,PURPLE
+0,5,2,true,BLUE
+

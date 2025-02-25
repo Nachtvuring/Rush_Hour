@@ -3,8 +3,8 @@ package be.kdg.project.view.beginScreen;
 import be.kdg.project.view.SceneManager;
 import be.kdg.project.view.gameScreen.GamePresenter;
 import be.kdg.project.view.gameScreen.GameView;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -15,8 +15,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class View extends BorderPane {
-
-    private SceneManager sceneManager;
+    private final SceneManager sceneManager;
+    private static String selectedDifficulty = "Beginner";
 
     private Button beginnerButton;
     private Button intermediateButton;
@@ -24,7 +24,7 @@ public class View extends BorderPane {
     private Button expertButton;
     private Button playButton;
     private TextField textField;
-    private ChoiceBox<Integer> choiceBox;
+    private static ChoiceBox<Integer> choiceBox;
 
     public View(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
@@ -45,7 +45,7 @@ public class View extends BorderPane {
         playButton.setOnAction(event -> startGame());
 
         choiceBox = new ChoiceBox<>();
-        choiceBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        choiceBox.getItems().addAll(1, 2, 3);
         choiceBox.setValue(1);
 
         HBox buttonBox = new HBox(10, beginnerButton, intermediateButton, advancedButton, expertButton);
@@ -53,9 +53,38 @@ public class View extends BorderPane {
 
         VBox textBox = new VBox(10, text, textField, buttonBox, choiceBox, playButton);
         textBox.setAlignment(Pos.CENTER);
-        textBox.setPadding(new Insets(50));
+        textBox.setPadding(new Insets(200));
 
         this.setTop(textBox);
+
+        beginnerButton.setOnAction(e -> {
+            selectedDifficulty = "Beginner";
+            enableChoiceBox();
+        });
+        intermediateButton.setOnAction(e -> {
+            selectedDifficulty = "Intermediate";
+            enableChoiceBox();
+        });
+        advancedButton.setOnAction(e -> {
+            selectedDifficulty = "Advanced";
+            enableChoiceBox();
+        });
+        expertButton.setOnAction(e -> {
+            selectedDifficulty = "Expert";
+            enableChoiceBox();
+        });
+    }
+
+    private void enableChoiceBox() {
+        choiceBox.setDisable(false);
+    }
+
+    private void disableChoiceBox() {
+        choiceBox.setDisable(true);
+    }
+
+    public static String getSelectedDifficulty() {
+        return selectedDifficulty;
     }
 
     private void startGame() {
@@ -69,7 +98,7 @@ public class View extends BorderPane {
         return playButton;
     }
 
-    public ChoiceBox<Integer> getChoiceBox() {
+    public static ChoiceBox<Integer> getChoiceBox() {
         return choiceBox;
     }
 

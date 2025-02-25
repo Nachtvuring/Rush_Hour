@@ -1,5 +1,7 @@
 package be.kdg.project.model;
 
+import be.kdg.project.view.beginScreen.View;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.paint.Color;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -7,13 +9,47 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.text.DateFormat.MEDIUM;
+
 public class Game {
     private final List<Auto> autos;
     private final int gridSize = 6;
 
     public Game() {
         this.autos = new ArrayList<>();
-        loadAutosFromFile("levels.txt");
+        if (View.getSelectedDifficulty().equals("Beginner")) {
+            int selectedLevel = View.getChoiceBox().getValue();
+            switch (selectedLevel) {
+                case 1 -> loadAutosFromFile("easyLevel1.txt");
+                case 2 -> loadAutosFromFile("easyLevel2.txt");
+                case 3 -> loadAutosFromFile("easyLevel3.txt");
+                default -> throw new RuntimeException("Invalid level selected");
+            }
+        } else if (View.getSelectedDifficulty().equals("Intermediate")) {
+            int selectedLevel = View.getChoiceBox().getValue();
+            switch (selectedLevel) {
+                case 1 -> loadAutosFromFile("intermediateLevel1.txt");
+                case 2 -> loadAutosFromFile("intermediateLevel2.txt");
+                case 3 -> loadAutosFromFile("intermediateLevel3.txt");
+                default -> throw new RuntimeException("Invalid level selected");
+            }
+        } else if (View.getSelectedDifficulty().equals("Advanced")) {
+            int selectedLevel = View.getChoiceBox().getValue();
+            switch (selectedLevel) {
+                case 1 -> loadAutosFromFile("advancedLevel1.txt");
+                case 2 -> loadAutosFromFile("advancedLevel2.txt");
+                case 3 -> loadAutosFromFile("advancedLevel3.txt");
+                default -> throw new RuntimeException("Invalid level selected");
+            }
+        } else if (View.getSelectedDifficulty().equals("Expert")) {
+            int selectedLevel = View.getChoiceBox().getValue();
+            switch (selectedLevel) {
+                case 1 -> loadAutosFromFile("expertLevel1.txt");
+                case 2 -> loadAutosFromFile("expertLevel2.txt");
+                case 3 -> loadAutosFromFile("expertLevel3.txt");
+                default -> throw new RuntimeException("Invalid level selected");
+            }
+        }
     }
 
     private void loadAutosFromFile(String filename) {

@@ -30,9 +30,6 @@ public class GamePresenter {
         view.getBackButton().setOnAction(event ->
                 view.getSceneManager().setScene(new Scene(new View(view.getSceneManager()), 800, 600)));
 
-        view.getTestButton().setOnAction(event ->
-                PopupWindow.showPopup("Belangrijke melding", "Dit is een custom popup!", view.getSceneManager()));
-
         view.getSpeelveld().setOnMouseClicked(this::handleGridClick);
     }
 

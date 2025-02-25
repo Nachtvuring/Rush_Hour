@@ -19,7 +19,6 @@ public class GameView extends VBox {
     private final SceneManager sceneManager;
     private final GridPane speelveld;
     private final Button backButton;
-    private final Button testButton;
     private final Label highScore;
     private final Label scoreLabel;
 
@@ -28,7 +27,6 @@ public class GameView extends VBox {
         this.speelveld = createGrid();
         this.highScore = new Label("High Score");
         this.scoreLabel = new Label("Score");
-        this.testButton = new Button("Test");
         this.backButton = new Button("Quit");
 
         initializeLayout();
@@ -36,7 +34,6 @@ public class GameView extends VBox {
     }
 
     private void initializeLayout() {
-        testButton.setOnAction(e -> PopupWindow.showPopup("Test", "This is a test popup", sceneManager));
         backButton.setOnAction(event -> goToMenu());
 
         HBox topSection = new HBox(200, highScore, scoreLabel, backButton);
@@ -46,7 +43,6 @@ public class GameView extends VBox {
         BorderPane mainLayout = new BorderPane();
         mainLayout.setTop(topSection);
         mainLayout.setCenter(speelveld);
-        mainLayout.setBottom(testButton);
 
         this.getChildren().addAll(mainLayout);
         this.setAlignment(Pos.CENTER);
@@ -90,10 +86,6 @@ public class GameView extends VBox {
 
     public Button getBackButton() {
         return backButton;
-    }
-
-    public Button getTestButton() {
-        return testButton;
     }
 
     public Label getHighScore() {

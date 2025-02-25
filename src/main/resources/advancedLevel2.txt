@@ -1,0 +1,8 @@
+# Advanced Level 2
+
+0,2,2,true,RED
+2,2,3,true,BLUE
+4,4,2,false,GREEN
+0,1,3,true,YELLOW
+1,4,2,false,ORANGE
+3,0,2,false,PURPLE

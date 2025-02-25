@@ -1,0 +1,8 @@
+# Expert Level 2
+
+0,2,2,true,RED
+4,1,3,false,YELLOW
+1,3,2,true,BLUE
+5,3,3,false,GREEN
+2,2,2,true,PURPLE
+3,3,2,false,ORANGE
