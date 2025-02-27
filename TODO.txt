@@ -1,0 +1,14 @@
+-Storing and showing high score
+-Changing rectangles to car images
+-Fixing the levels make them better
+-Fixing play again button that it actually restarts the level
+-No preselected button
+-Input field fixing
+-Popupwindow when you try to quit your game
+-About us button
+-Help button
+-Make the css for menu
+-Make the css for the game
+-Make the css for the popupwindow
+
+-MAKE IT MVP STRUCTURE
