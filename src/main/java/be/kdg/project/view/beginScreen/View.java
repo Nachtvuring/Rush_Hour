@@ -33,7 +33,7 @@ public class View extends BorderPane {
 
         Text text = new Text("Rush Hour");
 
-        textField = new TextField();
+        textField = new TextField(playerName);
         textField.setPromptText("Player name");
         textField.setMaxWidth(200);
         textField.setAlignment(Pos.CENTER);
@@ -60,21 +60,42 @@ public class View extends BorderPane {
 
         this.setTop(textBox);
 
+        String selectedStyle = "-fx-background-color: #4CAF50; -fx-text-fill: white;";
+        String defaultStyle = "";
+
+        beginnerButton.setStyle(selectedStyle); // Default selected
+
         beginnerButton.setOnAction(e -> {
             selectedDifficulty = "Beginner";
             enableChoiceBox();
+            beginnerButton.setStyle(selectedStyle);
+            intermediateButton.setStyle(defaultStyle);
+            advancedButton.setStyle(defaultStyle);
+            expertButton.setStyle(defaultStyle);
         });
         intermediateButton.setOnAction(e -> {
             selectedDifficulty = "Intermediate";
             enableChoiceBox();
+            beginnerButton.setStyle(defaultStyle);
+            intermediateButton.setStyle(selectedStyle);
+            advancedButton.setStyle(defaultStyle);
+            expertButton.setStyle(defaultStyle);
         });
         advancedButton.setOnAction(e -> {
             selectedDifficulty = "Advanced";
             enableChoiceBox();
+            beginnerButton.setStyle(defaultStyle);
+            intermediateButton.setStyle(defaultStyle);
+            advancedButton.setStyle(selectedStyle);
+            expertButton.setStyle(defaultStyle);
         });
         expertButton.setOnAction(e -> {
             selectedDifficulty = "Expert";
             enableChoiceBox();
+            beginnerButton.setStyle(defaultStyle);
+            intermediateButton.setStyle(defaultStyle);
+            advancedButton.setStyle(defaultStyle);
+            expertButton.setStyle(selectedStyle);
         });
     }
 

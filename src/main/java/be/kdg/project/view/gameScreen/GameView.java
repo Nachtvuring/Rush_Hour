@@ -1,9 +1,10 @@
 package be.kdg.project.view.gameScreen;
 
+import be.kdg.project.model.HighScore;
+import be.kdg.project.view.SceneManager;
 import be.kdg.project.view.beginScreen.View;
 import be.kdg.project.model.Auto;
 import be.kdg.project.view.PopupWindow;
-import be.kdg.project.view.SceneManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -21,31 +22,43 @@ public class GameView extends VBox {
     private final Button backButton;
     private final Label highScore;
     private final Label scoreLabel;
+    private final HighScore highScoreManager;
+    private final HBox topBar;
 
     public GameView(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
         this.speelveld = createGrid();
-        this.highScore = new Label("High Score");
-        this.scoreLabel = new Label("Score");
-        this.backButton = new Button("Quit");
+        this.highScoreManager = new HighScore();
 
-        initializeLayout();
-        new GamePresenter(this);
+        String currentDifficulty = View.getSelectedDifficulty();
+        int currentCard = View.getChoiceBox().getValue();
+        this.highScore = new Label("High Score: " + highScoreManager.getTopScore(currentDifficulty, currentCard));
+        this.highScore.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+
+        this.scoreLabel = new Label("Score: 0");
+        this.scoreLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+
+        this.backButton = new Button("Quit");
+        this.backButton.setOnAction(e -> goToMenu());
+
+        this.topBar = new HBox(20);
+        this.topBar.setAlignment(Pos.CENTER);
+        this.topBar.setPadding(new Insets(10));
+        this.topBar.getChildren().addAll(scoreLabel, highScore, backButton);
+
+        setSpacing(10);
+        getChildren().addAll(topBar, speelveld);
+        setAlignment(Pos.CENTER);
     }
 
-    private void initializeLayout() {
-        backButton.setOnAction(event -> goToMenu());
-
-        HBox topSection = new HBox(200, highScore, scoreLabel, backButton);
-        topSection.setPadding(new Insets(10));
-        topSection.setAlignment(Pos.TOP_CENTER);
-
-        BorderPane mainLayout = new BorderPane();
-        mainLayout.setTop(topSection);
-        mainLayout.setCenter(speelveld);
-
-        this.getChildren().addAll(mainLayout);
-        this.setAlignment(Pos.CENTER);
+    public void updateScore(int score) {
+        scoreLabel.setText("Score: " + score);
+        if (score > 0) {
+            String currentDifficulty = View.getSelectedDifficulty();
+            int currentCard = View.getChoiceBox().getValue();
+            highScore.setText("High Score: " +
+                    highScoreManager.getTopScore(currentDifficulty, currentCard));
+        }
     }
 
     private GridPane createGrid() {
@@ -99,6 +112,7 @@ public class GameView extends VBox {
     private void goToMenu() {
         sceneManager.setScene(new Scene(new View(sceneManager), 800, 600));
     }
+
     public SceneManager getSceneManager() {
         return sceneManager;
     }

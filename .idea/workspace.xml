@@ -36,10 +36,9 @@
       <change beforePath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/mvp/view/gameScreen/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour/src/main/java/be/kdg/project/rushhour/mvp/view/gameScreen/GameView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rush_Hour/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Rush_Hour/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/PopupWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/PopupWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/HighScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/HighScore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/beginScreen/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/beginScreen/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/AutoHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/AutoHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GamePresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GamePresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GameView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +117,9 @@
       <option name="presentableId" value="Default" />
       <updated>1740392402637</updated>
       <workItem from="1740392404317" duration="1003000" />
-      <workItem from="1740393435468" duration="21160000" />
+      <workItem from="1740393435468" duration="23628000" />
+      <workItem from="1740504508043" duration="1806000" />
+      <workItem from="1740574741936" duration="20000" />
     </task>
     <servers />
   </component>

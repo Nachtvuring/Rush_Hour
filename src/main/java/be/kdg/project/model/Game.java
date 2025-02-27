@@ -18,7 +18,7 @@ public class Game {
 
     public Game() {
         this.autos = new ArrayList<>();
-        this.score = 2000;
+        this.score = 10000;
         if (View.getSelectedDifficulty().equals("Beginner")) {
             int selectedLevel = View.getChoiceBox().getValue();
             switch (selectedLevel) {
