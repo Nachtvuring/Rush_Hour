@@ -3,6 +3,7 @@ package be.kdg.project.view.beginScreen;
 import be.kdg.project.view.SceneManager;
 import be.kdg.project.view.gameScreen.GamePresenter;
 import be.kdg.project.view.gameScreen.GameView;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -33,12 +34,18 @@ public class View extends BorderPane {
 
         Text text = new Text("Rush Hour");
 
-        textField = new TextField(playerName);
+        TextField textField = new TextField();
         textField.setPromptText("Player name");
         textField.setMaxWidth(200);
         textField.setAlignment(Pos.CENTER);
-        textField.textProperty().addListener((observable, oldValue, newValue) ->
-                playerName = newValue.isEmpty() ? "Player" : newValue);
+
+
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            playerName = newValue.isEmpty() ? "Player" : newValue;
+        });
+
+        Platform.runLater(() -> textField.getParent().requestFocus());
+
 
         beginnerButton = new Button("Beginner");
         intermediateButton = new Button("Intermediate");
