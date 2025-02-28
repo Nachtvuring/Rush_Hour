@@ -63,8 +63,6 @@ public class View extends BorderPane {
         String selectedStyle = "-fx-background-color: #4CAF50; -fx-text-fill: white;";
         String defaultStyle = "";
 
-        beginnerButton.setStyle(selectedStyle); // Default selected
-
         beginnerButton.setOnAction(e -> {
             selectedDifficulty = "Beginner";
             enableChoiceBox();

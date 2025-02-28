@@ -2,7 +2,6 @@
 -Changing rectangles to car images
 -Fixing the levels make them better
 -Fixing play again button that it actually restarts the level
--No preselected button
 -Input field fixing
 -Popupwindow when you try to quit your game
 -About us button
