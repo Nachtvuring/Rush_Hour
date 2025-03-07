@@ -1,5 +1,4 @@
 -Storing and showing high score
--Fixing play again button that it actually restarts the level
 
 -Fixing the levels make them better
 

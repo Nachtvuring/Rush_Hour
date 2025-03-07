@@ -1,7 +1,10 @@
 package be.kdg.project.view;
 
-import javafx.geometry.Pos;
+import be.kdg.project.model.Game;
 import be.kdg.project.view.beginScreen.View;
+import be.kdg.project.view.gameScreen.GamePresenter;
+import be.kdg.project.view.gameScreen.GameView;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -39,6 +42,11 @@ public class PopupWindow {
 
         playAgainButton.setOnAction(e -> {
             popupStage.close();
+            if (sceneManager != null) {
+                GameView gameView = new GameView(sceneManager);
+                GamePresenter gamePresenter = new GamePresenter(gameView);
+                sceneManager.setScene(new Scene(gameView, 800, 600));
+            }
         });
 
         VBox layout = new VBox(10);
