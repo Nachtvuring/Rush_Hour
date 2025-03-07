@@ -1,10 +1,12 @@
 -Storing and showing high score
--Changing rectangles to car images
--Fixing the levels make them better
 -Fixing play again button that it actually restarts the level
--Popupwindow when you try to quit your game
+
+-Fixing the levels make them better
+
 -About us button
 -Help button
+
+-Changing rectangles to car images
 -Make the css for menu
 -Make the css for the game
 -Make the css for the popupwindow

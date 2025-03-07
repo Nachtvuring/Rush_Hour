@@ -25,9 +25,6 @@ public class GamePresenter {
     }
 
     private void attachEventHandlers() {
-        view.getBackButton().setOnAction(event ->
-                view.getSceneManager().setScene(new Scene(new View(view.getSceneManager()), 800, 600)));
-
         view.getSpeelveld().setOnMouseClicked(this::handleGridClick);
     }
 

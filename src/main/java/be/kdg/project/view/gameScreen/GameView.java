@@ -39,7 +39,7 @@ public class GameView extends VBox {
         this.scoreLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
 
         this.backButton = new Button("Quit");
-        this.backButton.setOnAction(e -> goToMenu());
+        this.backButton.setOnAction(e -> QuitPopup.display(sceneManager));
 
         this.topBar = new HBox(20);
         this.topBar.setAlignment(Pos.CENTER);
