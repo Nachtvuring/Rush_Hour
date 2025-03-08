@@ -2,9 +2,6 @@
 
 -Fixing the levels make them better
 
--About us button
--Help button
-
 -Changing rectangles to car images
 -Make the css for menu
 -Make the css for the game

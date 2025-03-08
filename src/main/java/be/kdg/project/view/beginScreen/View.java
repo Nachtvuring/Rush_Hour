@@ -34,18 +34,16 @@ public class View extends BorderPane {
 
         Text text = new Text("Rush Hour");
 
-        TextField textField = new TextField();
+        textField = new TextField();
         textField.setPromptText("Player name");
         textField.setMaxWidth(200);
         textField.setAlignment(Pos.CENTER);
-
 
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             playerName = newValue.isEmpty() ? "Player" : newValue;
         });
 
         Platform.runLater(() -> textField.getParent().requestFocus());
-
 
         beginnerButton = new Button("Beginner");
         intermediateButton = new Button("Intermediate");
@@ -65,7 +63,22 @@ public class View extends BorderPane {
         textBox.setAlignment(Pos.CENTER);
         textBox.setPadding(new Insets(200));
 
-        this.setTop(textBox);
+        // Add About Us and Help buttons
+        Button aboutUsButton = new Button("About Us");
+        Button helpButton = new Button("Help");
+
+        aboutUsButton.setOnAction(e -> sceneManager.setScene(new Scene(new AboutUsView(sceneManager), 800, 600)));
+        helpButton.setOnAction(e -> sceneManager.setScene(new Scene(new HelpView(sceneManager), 800, 600)));
+
+        HBox topRightButtons = new HBox(10, aboutUsButton, helpButton);
+        topRightButtons.setAlignment(Pos.TOP_RIGHT);
+        topRightButtons.setPadding(new Insets(10));
+
+        BorderPane centerPane = new BorderPane();
+        centerPane.setCenter(textBox);
+        centerPane.setTop(topRightButtons);
+
+        this.setCenter(centerPane);
 
         String selectedStyle = "-fx-background-color: #4CAF50; -fx-text-fill: white;";
         String defaultStyle = "";
