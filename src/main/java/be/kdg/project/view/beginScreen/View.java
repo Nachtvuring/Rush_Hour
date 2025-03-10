@@ -63,7 +63,6 @@ public class View extends BorderPane {
         textBox.setAlignment(Pos.CENTER);
         textBox.setPadding(new Insets(200));
 
-        // Add About Us and Help buttons
         Button aboutUsButton = new Button("About Us");
         Button helpButton = new Button("Help");
 

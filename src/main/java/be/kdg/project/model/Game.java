@@ -9,8 +9,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.text.DateFormat.MEDIUM;
-
 public class Game {
     private final List<Auto> autos;
     private final int gridSize = 6;
@@ -61,7 +59,6 @@ public class Game {
     public int getScore() {
         return score;
     }
-
 
     private void loadAutosFromFile(String filename) {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream(filename);
@@ -142,7 +139,11 @@ public class Game {
     public boolean checkWin() {
         for (Auto auto : autos) {
             if (auto.getColor() == Color.RED) {
-                return auto.getxPos() == 4 && auto.getyPos() == 2;
+                if (auto.getxPos() == 4 && auto.getyPos() == 2) {
+                    HighScore highScore = new HighScore();
+                    highScore.writeScore(View.getSelectedDifficulty(), View.getChoiceBox().getValue(), getScore());
+                    return true;
+                }
             }
         }
         return false;

@@ -1,55 +1,53 @@
 package be.kdg.project.model;
 
 import java.io.*;
+import java.nio.file.*;
 import java.util.*;
 
 public class HighScore {
-    private static final String HIGHSCORE_FILE = "highscores.txt";
-    private final Map<String, TreeMap<Integer, String>> highScores;
+    private static final String FILE_PATH = "C:\\Users\\Yannick\\OneDrive - KdG\\Documents\\school\\programmeren 1\\JavaFX\\Rush_Hour\\src\\main\\resources\\highscores.txt";
 
-    public HighScore() {
-        this.highScores = new HashMap<>();
-        loadHighScores();
-    }
+    public void writeScore(String difficulty, int level, int score) {
+        int currentHighScore = getTopScore(difficulty, level);
+        if (score > currentHighScore) {
+            List<String> lines = new ArrayList<>();
+            try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(",");
+                    if (!(parts[0].equals(difficulty) && Integer.parseInt(parts[1]) == level)) {
+                        lines.add(line);
+                    }
+                }
+            } catch (IOException e) {
+                System.err.println("Error reading score from file: " + e.getMessage());
+            }
 
-    public void addScore(String playerName, int score, String difficulty, int cardNumber) {
-        String key = difficulty + "_" + cardNumber;
-        highScores.putIfAbsent(key, new TreeMap<>(Collections.reverseOrder()));
-        highScores.get(key).put(score, playerName);
-        saveHighScores();
-    }
+            lines.add(difficulty + "," + level + "," + score);
 
-    public String getTopScore(String difficulty, int cardNumber) {
-        String key = difficulty + "_" + cardNumber;
-        if (!highScores.containsKey(key) || highScores.get(key).isEmpty()) {
-            return "No scores yet";
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+                for (String line : lines) {
+                    writer.write(line);
+                    writer.newLine();
+                }
+            } catch (IOException e) {
+                System.err.println("Error writing score to file: " + e.getMessage());
+            }
         }
-        Map.Entry<Integer, String> topEntry = highScores.get(key).firstEntry();
-        return String.format("%d by %s", topEntry.getKey(), topEntry.getValue());
     }
 
-    private void loadHighScores() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(HIGHSCORE_FILE))) {
+    public int getTopScore(String difficulty, int level) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split("\\|");
-                String key = parts[0];
-                String playerName = parts[1];
-                int score = Integer.parseInt(parts[2]);
-
-                highScores.putIfAbsent(key, new TreeMap<>(Collections.reverseOrder()));
-                highScores.get(key).put(score, playerName);
-            }
-        } catch (IOException ignored) {}
-    }
-
-    private void saveHighScores() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(HIGHSCORE_FILE))) {
-            for (Map.Entry<String, TreeMap<Integer, String>> levelEntry : highScores.entrySet()) {
-                for (Map.Entry<Integer, String> scoreEntry : levelEntry.getValue().entrySet()) {
-                    writer.println(levelEntry.getKey() + "|" + scoreEntry.getValue() + "|" + scoreEntry.getKey());
+                String[] parts = line.split(",");
+                if (parts[0].equals(difficulty) && Integer.parseInt(parts[1]) == level) {
+                    return Integer.parseInt(parts[2]);
                 }
             }
-        } catch (IOException ignored) {}
+        } catch (IOException e) {
+            System.err.println("Error reading score from file: " + e.getMessage());
+        }
+        return 0;
     }
 }

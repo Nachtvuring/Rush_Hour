@@ -1,0 +1,16 @@
+Easy,1,0
+Easy,2,0
+Easy,3,0
+Medium,1,0
+Medium,2,0
+Medium,3,0
+Hard,1,0
+Hard,2,0
+Hard,3,0
+Advanced,1,0
+Advanced,2,0
+Advanced,3,0
+Expert,2,0
+Expert,3,0
+Expert,1,0
+Beginner,1,0

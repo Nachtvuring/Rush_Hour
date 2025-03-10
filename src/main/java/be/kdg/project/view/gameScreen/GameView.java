@@ -1,10 +1,9 @@
 package be.kdg.project.view.gameScreen;
 
+import be.kdg.project.model.Auto;
 import be.kdg.project.model.HighScore;
 import be.kdg.project.view.SceneManager;
 import be.kdg.project.view.beginScreen.View;
-import be.kdg.project.model.Auto;
-import be.kdg.project.view.PopupWindow;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -24,19 +23,19 @@ public class GameView extends VBox {
     private final Label scoreLabel;
     private final HighScore highScoreManager;
     private final HBox topBar;
+    private int currentScore;
 
     public GameView(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
         this.speelveld = createGrid();
         this.highScoreManager = new HighScore();
+        this.currentScore = 0;
 
         String currentDifficulty = View.getSelectedDifficulty();
         int currentCard = View.getChoiceBox().getValue();
         this.highScore = new Label("High Score: " + highScoreManager.getTopScore(currentDifficulty, currentCard));
-        this.highScore.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
 
         this.scoreLabel = new Label("Score: 0");
-        this.scoreLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
 
         this.backButton = new Button("Quit");
         this.backButton.setOnAction(e -> QuitPopup.display(sceneManager));
@@ -52,13 +51,19 @@ public class GameView extends VBox {
     }
 
     public void updateScore(int score) {
+        this.currentScore = score;
         scoreLabel.setText("Score: " + score);
         if (score > 0) {
             String currentDifficulty = View.getSelectedDifficulty();
             int currentCard = View.getChoiceBox().getValue();
-            highScore.setText("High Score: " +
-                    highScoreManager.getTopScore(currentDifficulty, currentCard));
+            highScoreManager.writeScore(currentDifficulty, currentCard, score);
+            highScore.setText("High Score: " + highScoreManager.getTopScore(currentDifficulty, currentCard));
         }
+    }
+
+    // Call this method during gameplay to update the score
+    public void incrementScore(int points) {
+        updateScore(this.currentScore + points);
     }
 
     private GridPane createGrid() {

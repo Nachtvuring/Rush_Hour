@@ -1,7 +1,5 @@
 -Storing and showing high score
 
--Fixing the levels make them better
-
 -Changing rectangles to car images
 -Make the css for menu
 -Make the css for the game
