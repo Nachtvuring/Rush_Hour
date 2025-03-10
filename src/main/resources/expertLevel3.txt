@@ -1,8 +1,14 @@
 # Expert Level 3
 
-0,2,2,true,RED
-0,1,3,true,BLUE
-3,3,2,false,BLUE
-2,5,3,true,BLUE
-5,2,2,false,BLUE
-1,4,2,true,BLUE
+2,2,2,true,RED
+0,0,2,true,PURPLE
+0,1,2,true,YELLOW
+3,0,2,false,ORANGE
+4,0,3,false,YELLOW
+5,0,2,false,ORANGE
+0,2,2,false,GREEN
+1,2,2,false,BLUE
+0,4,2,false,PURPLE
+2,3,2,false,ORANGE
+3,4,2,true,YELLOW
+3,5,2,true,BROWN

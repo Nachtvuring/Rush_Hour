@@ -1,8 +1,10 @@
 # Intermediate Level 3
 
 0,2,2,true,RED
-2,1,2,true,BLUE
-3,3,3,false,GREEN
-0,4,2,true,YELLOW
-5,2,3,false,ORANGE
-1,5,2,true,PURPLE
+2,0,3,true,BLUE
+5,0,3,false,GREEN
+2,2,3,false,YELLOW
+4,3,2,true,ORANGE
+0,4,2,false,YELLOW
+1,5,3,true,WHITE
+4,4,2,false,YELLOW

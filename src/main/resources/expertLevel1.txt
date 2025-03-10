@@ -1,3 +1,14 @@
 # Expert Level 1
 
-0,2,2,true,RED
+1,2,2,true,RED
+0,0,3,true,WHITE
+0,1,3,false,PURPLE
+1,1,2,true,WHITE
+3,0,3,false,BLUE
+4,1,2,true,WHITE
+2,3,2,false,WHITE
+3,3,2,true,BROWN
+5,2,3,false,WHITE
+0,5,3,true,YELLOW
+4,4,2,false,YELLOW
+
