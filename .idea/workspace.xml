@@ -7,10 +7,7 @@
     <list default="true" id="57321d53-54a1-478b-ba35-72fc5442fed8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Auto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Auto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/car.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/easyLevel1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/easyLevel1.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +100,7 @@
       <workItem from="1740753163433" duration="630000" />
       <workItem from="1741605401994" duration="10930000" />
       <workItem from="1741696130346" duration="504000" />
-      <workItem from="1741696644814" duration="4025000" />
+      <workItem from="1741696644814" duration="5878000" />
     </task>
     <servers />
   </component>

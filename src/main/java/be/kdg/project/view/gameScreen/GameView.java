@@ -71,6 +71,8 @@ public class GameView extends VBox {
         grid.setStyle("-fx-border-color: black; -fx-background-color: lightgray; -fx-border-width: 2px;");
         grid.setGridLinesVisible(true);
 
+
+
         for (int i = 0; i < 6; i++) {
             grid.getColumnConstraints().add(new ColumnConstraints(50));
             grid.getRowConstraints().add(new RowConstraints(50));
@@ -83,6 +85,7 @@ public class GameView extends VBox {
         for (Auto auto : autos) {
             plaatsAuto(auto);
         }
+
     }
 
     public void plaatsAuto(Auto auto) {

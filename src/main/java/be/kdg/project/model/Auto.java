@@ -40,6 +40,13 @@ public class Auto {
             frontClickArea.setFitHeight(50);
             backClickArea.setFitWidth(50);
             backClickArea.setFitHeight(50);
+
+            // Position click areas for horizontal car
+            frontClickArea.setTranslateX((lengte - 1) * 25);
+            backClickArea.setTranslateX(-(lengte - 1) * 25);
+
+            // Position car image at center
+            carImage.setTranslateX(0);
         } else {
             carImage.setFitWidth(50);
             carImage.setFitHeight(50 * lengte);
@@ -47,11 +54,22 @@ public class Auto {
             frontClickArea.setFitHeight(50);
             backClickArea.setFitWidth(50);
             backClickArea.setFitHeight(50);
+
+            // Position click areas for vertical car
+            frontClickArea.setTranslateY(0);
+            backClickArea.setTranslateY((lengte - 1) * 50);
+
+            // Center the car image at its starting point
+            carImage.setTranslateY((lengte - 1) * 25);
         }
 
-        // Create separate clickable areas
-        this.clickableCar = new StackPane(carImage);
-        this.node = carImage;
+        // Stack all components correctly
+        this.clickableCar = new StackPane(frontClickArea, backClickArea, carImage);
+        this.node = clickableCar;
+
+        // Debug visualization
+        frontClickArea.setStyle("-fx-background-color: rgba(255,0,0,0.3);");
+        backClickArea.setStyle("-fx-background-color: rgba(0,255,0,0.3);");
     }
 
     public void setOnMouseClicked(EventHandler<? super MouseEvent> eventHandler) {
