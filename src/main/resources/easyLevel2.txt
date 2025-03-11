@@ -1,6 +1,6 @@
 # easy level 2
 
-0,2,2,true,RED
+0,2,2,true,/carh.png
 0,0,2,false,YELLOW
 5,0,3,false,YELLOW
 2,4,2,false,BLUE

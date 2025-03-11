@@ -1,6 +1,6 @@
 # Expert Level 2
 
-0,2,2,true,RED
+0,2,2,true,/carh.png
 2,1,2,false,WHITE
 3,0,3,false,BLUE
 4,1,2,false,WHITE

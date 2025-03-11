@@ -1,6 +1,4 @@
--Changing rectangles to car images
+-MAKE IT MVP STRUCTURE
 -Make the css for menu
 -Make the css for the game
 -Make the css for the popupwindow
-
--MAKE IT MVP STRUCTURE

@@ -1,6 +1,6 @@
 # Expert Level 3
 
-2,2,2,true,RED
+2,2,2,true,/carh.png
 0,0,2,true,PURPLE
 0,1,2,true,YELLOW
 3,0,2,false,ORANGE

@@ -1,6 +1,6 @@
 # Intermediate Level 3
 
-0,2,2,true,RED
+0,2,2,true,/carh.png
 2,0,3,true,BLUE
 5,0,3,false,GREEN
 2,2,3,false,YELLOW
