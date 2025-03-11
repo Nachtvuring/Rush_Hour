@@ -1,5 +1,6 @@
 package be.kdg.project.model;
 
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -9,8 +10,10 @@ import java.util.List;
 
 public class Board {
     private GridPane speelveld;
+    private final List<Auto> autos;
 
-    public Board() {
+    public Board(List<Auto> autos) {
+        this.autos = autos;
         this.speelveld = createGrid();
     }
 
@@ -35,17 +38,34 @@ public class Board {
         }
     }
 
-    private void plaatsAuto(Auto auto) {
-        ImageView carImageView = auto.getNode();
-        // First, configure the spans before adding to grid
-        if (auto.isHorizontaal()) {
-            GridPane.setColumnSpan(carImageView, auto.getLengte());
-            GridPane.setRowSpan(carImageView, 1);
-            speelveld.add(carImageView, auto.getxPos(), auto.getyPos());
-        } else {
-            GridPane.setColumnSpan(carImageView, 1);
-            GridPane.setRowSpan(carImageView, auto.getLengte());
-            speelveld.add(carImageView, auto.getxPos(), auto.getyPos());
+    private void handleAutoClick(Auto auto, MouseEvent event) {
+        ImageView source = (ImageView) event.getSource();
+        if (source == auto.getFrontClickArea()) {
+            auto.move(true);  // Move forward
+        } else if (source == auto.getBackClickArea()) {
+            auto.move(false); // Move backward
         }
+        updateSpeelveld(autos); // You'll need to make autos accessible
+    }
+
+
+    private void plaatsAuto(Auto auto) {
+        if (auto.isHorizontaal()) {
+            // Place main car image
+            speelveld.add(auto.getCarImage(), auto.getxPos(), auto.getyPos());
+            // Place click areas
+            speelveld.add(auto.getFrontClickArea(), auto.getxPos() + auto.getLengte() - 1, auto.getyPos());
+            speelveld.add(auto.getBackClickArea(), auto.getxPos(), auto.getyPos());
+        } else {
+            int adjustedY = auto.getyPos() - (auto.getLengte() - 1);
+            // Place main car image
+            speelveld.add(auto.getCarImage(), auto.getxPos(), adjustedY);
+            // Place click areas
+            speelveld.add(auto.getFrontClickArea(), auto.getxPos(), adjustedY);
+            speelveld.add(auto.getBackClickArea(), auto.getxPos(), auto.getyPos());
+        }
+
+        // Set click handlers
+        auto.setOnMouseClicked(event -> handleAutoClick(auto, event));
     }
 }

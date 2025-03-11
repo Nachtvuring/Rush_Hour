@@ -86,17 +86,7 @@ public class GameView extends VBox {
     }
 
     public void plaatsAuto(Auto auto) {
-        for (int i = 0; i < auto.getLengte(); i++) {
-            ImageView carImageView = new ImageView(auto.getNode().getImage());
-            carImageView.setFitWidth(50);
-            carImageView.setFitHeight(50);
-
-            if (auto.isHorizontaal()) {
-                speelveld.add(carImageView, auto.getxPos() + i, auto.getyPos());
-            } else {
-                speelveld.add(carImageView, auto.getxPos(), auto.getyPos() + i);
-            }
-        }
+        speelveld.add(auto.getNode(), auto.getxPos(), auto.getyPos());
     }
 
     public GridPane getSpeelveld() {

@@ -6,15 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="57321d53-54a1-478b-ba35-72fc5442fed8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Auto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Auto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/HighScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/model/HighScore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/AutoHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/AutoHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/kdg/project/view/gameScreen/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/car.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/easyLevel1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/easyLevel1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/highscores.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/highscores.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +103,7 @@
       <workItem from="1740753163433" duration="630000" />
       <workItem from="1741605401994" duration="10930000" />
       <workItem from="1741696130346" duration="504000" />
-      <workItem from="1741696644814" duration="784000" />
+      <workItem from="1741696644814" duration="4025000" />
     </task>
     <servers />
   </component>

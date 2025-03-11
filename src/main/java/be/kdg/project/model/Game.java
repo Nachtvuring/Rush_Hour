@@ -1,6 +1,8 @@
 package be.kdg.project.model;
 
 import be.kdg.project.view.beginScreen.View;
+import javafx.scene.image.ImageView;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -142,7 +144,7 @@ public class Game {
 
     public boolean checkWin() {
         for (Auto auto : autos) {
-            if (auto.getNode().getImage().getUrl().endsWith("car.png")) {
+            if (((ImageView)auto.getNode()).getImage().getUrl().endsWith("car.png")) {
                 if (auto.getxPos() == 4 && auto.getyPos() == 2) {
                     HighScore highScore = new HighScore();
                     highScore.writeScore(View.getSelectedDifficulty(), View.getChoiceBox().getValue(), getScore());

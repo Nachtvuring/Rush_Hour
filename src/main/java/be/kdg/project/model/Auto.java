@@ -1,32 +1,78 @@
 package be.kdg.project.model;
 
+import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 
 public class Auto {
     private int xPos;
     private int yPos;
     private final int lengte;
     private final boolean horizontaal;
-    private final ImageView node;
+    private final ImageView carImage;
+    private final ImageView frontClickArea;
+    private final ImageView backClickArea;
+    private final Node node;
+    private final StackPane clickableCar;
 
     public Auto(int xPos, int yPos, int lengte, boolean horizontaal, String imagePath) {
         this.xPos = xPos;
         this.yPos = yPos;
         this.lengte = lengte;
         this.horizontaal = horizontaal;
-        Image carImage = new Image(getClass().getResource(imagePath).toExternalForm(),
-                50, 50, false, true);  // Force image to be 50x50
-        this.node = new ImageView(carImage);
-        this.node.setPreserveRatio(false);
-        this.node.setSmooth(true);
+
+        // Main car image
+        this.carImage = new ImageView(new Image(imagePath));
+        carImage.setPreserveRatio(true);
+
+        // Create transparent click areas
+        this.frontClickArea = new ImageView();
+        this.backClickArea = new ImageView();
+
+        // Set sizes based on orientation
         if (horizontaal) {
-            this.node.setFitWidth(50 * lengte);
-            this.node.setFitHeight(50);
+            carImage.setFitWidth(50 * lengte);
+            carImage.setFitHeight(50);
+            frontClickArea.setFitWidth(50);
+            frontClickArea.setFitHeight(50);
+            backClickArea.setFitWidth(50);
+            backClickArea.setFitHeight(50);
         } else {
-            this.node.setFitWidth(50);
-            this.node.setFitHeight(50 * lengte);
+            carImage.setFitWidth(50);
+            carImage.setFitHeight(50 * lengte);
+            frontClickArea.setFitWidth(50);
+            frontClickArea.setFitHeight(50);
+            backClickArea.setFitWidth(50);
+            backClickArea.setFitHeight(50);
         }
+
+        // Create separate clickable areas
+        this.clickableCar = new StackPane(carImage);
+        this.node = carImage;
+    }
+
+    public void setOnMouseClicked(EventHandler<? super MouseEvent> eventHandler) {
+        frontClickArea.setOnMouseClicked(eventHandler);
+        backClickArea.setOnMouseClicked(eventHandler);
+    }
+
+    public ImageView getCarImage() {
+        return carImage;
+    }
+
+    public ImageView getFrontClickArea() {
+        return frontClickArea;
+    }
+
+    public ImageView getBackClickArea() {
+        return backClickArea;
+    }
+
+    public Node getNode() {
+        return node;
     }
 
     public int getxPos() {
@@ -45,15 +91,20 @@ public class Auto {
         return horizontaal;
     }
 
-    public ImageView getNode() {
-        return node;
-    }
-
-    public void move(boolean forward) {
-        if (horizontaal) {
-            xPos += forward ? 1 : -1;
+    public boolean move(boolean forward) {
+        if (forward) {
+            if (horizontaal) {
+                xPos++;
+            } else {
+                yPos++;
+            }
         } else {
-            yPos += forward ? 1 : -1;
+            if (horizontaal) {
+                xPos--;
+            } else {
+                yPos--;
+            }
         }
+        return true;
     }
 }
