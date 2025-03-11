@@ -144,7 +144,8 @@ public class Game {
 
     public boolean checkWin() {
         for (Auto auto : autos) {
-            if (((ImageView)auto.getNode()).getImage().getUrl().endsWith("car.png")) {
+//            if (((ImageView)auto.getNode()).getImage().getUrl().endsWith("carh.png")) {
+                if (auto.getCarImage().getImage().getUrl().endsWith("carh.png")) {
                 if (auto.getxPos() == 4 && auto.getyPos() == 2) {
                     HighScore highScore = new HighScore();
                     highScore.writeScore(View.getSelectedDifficulty(), View.getChoiceBox().getValue(), getScore());

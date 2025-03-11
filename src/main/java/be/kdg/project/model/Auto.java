@@ -125,4 +125,9 @@ public class Auto {
         }
         return true;
     }
+
+    public StackPane getClickableCar() {
+        return clickableCar;
+    }
+
 }

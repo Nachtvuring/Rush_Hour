@@ -14,4 +14,4 @@ Expert,1,0
 Expert,2,0
 Expert,3,0
 Beginner,2,9000
-Beginner,1,9200
+Beginner,1,9800

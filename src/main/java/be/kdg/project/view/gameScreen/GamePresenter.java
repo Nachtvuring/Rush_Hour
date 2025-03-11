@@ -80,4 +80,6 @@ public class GamePresenter {
     public boolean isMovePossible(Auto auto, boolean forward) {
         return game.isMovePossible(auto, forward);
     }
+
+
 }
