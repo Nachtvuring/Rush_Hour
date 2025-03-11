@@ -14,6 +14,7 @@ public class AutoHandler {
         this.auto = auto;
         this.presenter = presenter;
         attachEventHandlers();
+        addAutoToGrid();
     }
 
     private void attachEventHandlers() {
@@ -27,5 +28,11 @@ public class AutoHandler {
             auto.move(false);
         }
         presenter.refreshView();
+    }
+
+    private void addAutoToGrid() {
+        if (!speelveld.getChildren().contains(auto.getNode())) {
+            speelveld.add(auto.getNode(), auto.getxPos(), auto.getyPos());
+        }
     }
 }

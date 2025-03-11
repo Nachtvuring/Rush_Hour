@@ -1,23 +1,32 @@
 package be.kdg.project.model;
 
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Auto {
     private int xPos;
     private int yPos;
     private final int lengte;
     private final boolean horizontaal;
-    private final Color color;
-    private final Rectangle node;
+    private final ImageView node;
 
-    public Auto(int xPos, int yPos, int lengte, boolean horizontaal, Color color) {
+    public Auto(int xPos, int yPos, int lengte, boolean horizontaal, String imagePath) {
         this.xPos = xPos;
         this.yPos = yPos;
         this.lengte = lengte;
         this.horizontaal = horizontaal;
-        this.color = color;
-        this.node = new Rectangle(50, 50, color); // Example size
+        Image carImage = new Image(getClass().getResource(imagePath).toExternalForm(),
+                50, 50, false, true);  // Force image to be 50x50
+        this.node = new ImageView(carImage);
+        this.node.setPreserveRatio(false);
+        this.node.setSmooth(true);
+        if (horizontaal) {
+            this.node.setFitWidth(50 * lengte);
+            this.node.setFitHeight(50);
+        } else {
+            this.node.setFitWidth(50);
+            this.node.setFitHeight(50 * lengte);
+        }
     }
 
     public int getxPos() {
@@ -36,7 +45,7 @@ public class Auto {
         return horizontaal;
     }
 
-    public Rectangle getNode() {
+    public ImageView getNode() {
         return node;
     }
 
@@ -46,9 +55,5 @@ public class Auto {
         } else {
             yPos += forward ? 1 : -1;
         }
-    }
-
-    public Color getColor() {
-        return color;
     }
 }

@@ -1,8 +1,6 @@
 package be.kdg.project.model;
 
 import be.kdg.project.view.beginScreen.View;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.paint.Color;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -64,6 +62,10 @@ public class Game {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream(filename);
              BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
 
+            if (is == null) {
+                throw new RuntimeException("File not found: " + filename);
+            }
+
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("#") || line.trim().isEmpty()) {
@@ -76,18 +78,20 @@ public class Game {
                     int yPos = Integer.parseInt(parts[1].trim());
                     int length = Integer.parseInt(parts[2].trim());
                     boolean isHorizontal = Boolean.parseBoolean(parts[3].trim());
-                    Color color = Color.valueOf(parts[4].trim());
+                    String imagePath = parts[4].trim();
 
-                    autos.add(new Auto(xPos, yPos, length, isHorizontal, color));
+                    autos.add(new Auto(xPos, yPos, length, isHorizontal, imagePath));
+                } else {
+                    System.out.println("Invalid line format: " + line);
                 }
             }
 
             if (autos.isEmpty()) {
-                throw new RuntimeException("No autos loaded from file");
+                throw new RuntimeException("No autos loaded from file: " + filename);
             }
 
         } catch (Exception e) {
-            throw new RuntimeException("Failed to load autos from file: " + e.getMessage());
+            throw new RuntimeException("Failed to load autos from file: " + filename, e);
         }
     }
 
@@ -138,7 +142,7 @@ public class Game {
 
     public boolean checkWin() {
         for (Auto auto : autos) {
-            if (auto.getColor() == Color.RED) {
+            if (auto.getNode().getImage().getUrl().endsWith("car.png")) {
                 if (auto.getxPos() == 4 && auto.getyPos() == 2) {
                     HighScore highScore = new HighScore();
                     highScore.writeScore(View.getSelectedDifficulty(), View.getChoiceBox().getValue(), getScore());

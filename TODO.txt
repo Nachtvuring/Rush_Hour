@@ -1,5 +1,3 @@
--Storing and showing high score
-
 -Changing rectangles to car images
 -Make the css for menu
 -Make the css for the game

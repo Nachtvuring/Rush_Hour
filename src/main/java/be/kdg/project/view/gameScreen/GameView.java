@@ -9,9 +9,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 import java.util.List;
 
@@ -61,7 +60,6 @@ public class GameView extends VBox {
         }
     }
 
-    // Call this method during gameplay to update the score
     public void incrementScore(int points) {
         updateScore(this.currentScore + points);
     }
@@ -89,11 +87,14 @@ public class GameView extends VBox {
 
     public void plaatsAuto(Auto auto) {
         for (int i = 0; i < auto.getLengte(); i++) {
-            Rectangle rect = new Rectangle(50, 50, auto.getColor());
+            ImageView carImageView = new ImageView(auto.getNode().getImage());
+            carImageView.setFitWidth(50);
+            carImageView.setFitHeight(50);
+
             if (auto.isHorizontaal()) {
-                speelveld.add(rect, auto.getxPos() + i, auto.getyPos());
+                speelveld.add(carImageView, auto.getxPos() + i, auto.getyPos());
             } else {
-                speelveld.add(rect, auto.getxPos(), auto.getyPos() + i);
+                speelveld.add(carImageView, auto.getxPos(), auto.getyPos() + i);
             }
         }
     }
