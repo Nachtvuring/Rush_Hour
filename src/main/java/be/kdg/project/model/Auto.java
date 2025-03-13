@@ -66,10 +66,7 @@ public class Auto {
         // Stack all components correctly
         this.clickableCar = new StackPane(frontClickArea, backClickArea, carImage);
         this.node = clickableCar;
-
-        // Debug visualization
-        frontClickArea.setStyle("-fx-background-color: rgba(255,0,0,0.3);");
-        backClickArea.setStyle("-fx-background-color: rgba(0,255,0,0.3);");
+        
     }
 
     public void setOnMouseClicked(EventHandler<? super MouseEvent> eventHandler) {

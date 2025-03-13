@@ -1,9 +1,9 @@
 # easy level 2
 
 0,2,2,true,/carh.png
-0,0,2,false,YELLOW
-5,0,3,false,YELLOW
-2,4,2,false,BLUE
-3,5,3,true,BLUE
-4,3,2,true,YELLOW
+0,0,2,false,astoncarv.png
+5,0,3,false,camionv.png
+2,4,2,false,bluecarv.png
+3,5,3,true,greencarh.png
+4,3,2,true,whitecarh.png
 

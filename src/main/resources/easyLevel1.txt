@@ -1,6 +1,6 @@
 # easy level 1
 
 2,2,2,true,/carh.png
-4,0,3,false,/camion.jpg
-3,3,2,false,/defaultv.png
-4,4,2,true,/defaulth.png
+4,0,3,false,camionv.png
+3,3,2,false,/bluecarv.png
+4,4,2,true,greencarh.png
