@@ -5,7 +5,8 @@ import java.nio.file.*;
 import java.util.*;
 
 public class HighScore {
-    private static final String FILE_PATH = Paths.get("Rush_Hour","src", "main", "resources", "highscores.txt").toString();
+    private static final String FILE_PATH = Path.of("Rush_Hour", "src", "main", "resources", "highscores.txt")
+            .toString();
 
     public void writeScore(String difficulty, int level, int score) {
         int currentHighScore = getTopScore(difficulty, level);

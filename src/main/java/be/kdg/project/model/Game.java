@@ -1,6 +1,5 @@
 package be.kdg.project.model;
 
-import be.kdg.project.view.beginScreen.View;
 import javafx.scene.image.ImageView;
 
 import java.io.BufferedReader;
@@ -13,41 +12,52 @@ public class Game {
     private final List<Auto> autos;
     private final int gridSize = 6;
     private int score;
+    private String currentDifficulty;
+    private int currentLevel;
 
     public Game() {
         this.autos = new ArrayList<>();
         this.score = 10000;
-        if (View.getSelectedDifficulty().equals("Beginner")) {
-            int selectedLevel = View.getChoiceBox().getValue();
-            switch (selectedLevel) {
-                case 1 -> loadAutosFromFile("easyLevel1.txt");
-                case 2 -> loadAutosFromFile("easyLevel2.txt");
-                case 3 -> loadAutosFromFile("easyLevel3.txt");
-                default -> throw new RuntimeException("Invalid level selected");
+    }
+
+    public void initializeGame(String difficulty, int level) {
+        this.currentDifficulty = difficulty;
+        this.currentLevel = level;
+        this.autos.clear();
+        this.score = 10000;
+
+        switch (currentDifficulty) {
+            case "Beginner" -> {
+                switch (currentLevel) {
+                    case 1 -> loadAutosFromFile("easyLevel1.txt");
+                    case 2 -> loadAutosFromFile("easyLevel2.txt");
+                    case 3 -> loadAutosFromFile("easyLevel3.txt");
+                    default -> throw new RuntimeException("Invalid level selected");
+                }
             }
-        } else if (View.getSelectedDifficulty().equals("Intermediate")) {
-            int selectedLevel = View.getChoiceBox().getValue();
-            switch (selectedLevel) {
-                case 1 -> loadAutosFromFile("intermediateLevel1.txt");
-                case 2 -> loadAutosFromFile("intermediateLevel2.txt");
-                case 3 -> loadAutosFromFile("intermediateLevel3.txt");
-                default -> throw new RuntimeException("Invalid level selected");
+            case "Intermediate" -> {
+                switch (currentLevel) {
+                    case 1 -> loadAutosFromFile("intermediateLevel1.txt");
+                    case 2 -> loadAutosFromFile("intermediateLevel2.txt");
+                    case 3 -> loadAutosFromFile("intermediateLevel3.txt");
+                    default -> throw new RuntimeException("Invalid level selected");
+                }
             }
-        } else if (View.getSelectedDifficulty().equals("Advanced")) {
-            int selectedLevel = View.getChoiceBox().getValue();
-            switch (selectedLevel) {
-                case 1 -> loadAutosFromFile("advancedLevel1.txt");
-                case 2 -> loadAutosFromFile("advancedLevel2.txt");
-                case 3 -> loadAutosFromFile("advancedLevel3.txt");
-                default -> throw new RuntimeException("Invalid level selected");
+            case "Advanced" -> {
+                switch (currentLevel) {
+                    case 1 -> loadAutosFromFile("advancedLevel1.txt");
+                    case 2 -> loadAutosFromFile("advancedLevel2.txt");
+                    case 3 -> loadAutosFromFile("advancedLevel3.txt");
+                    default -> throw new RuntimeException("Invalid level selected");
+                }
             }
-        } else if (View.getSelectedDifficulty().equals("Expert")) {
-            int selectedLevel = View.getChoiceBox().getValue();
-            switch (selectedLevel) {
-                case 1 -> loadAutosFromFile("expertLevel1.txt");
-                case 2 -> loadAutosFromFile("expertLevel2.txt");
-                case 3 -> loadAutosFromFile("expertLevel3.txt");
-                default -> throw new RuntimeException("Invalid level selected");
+            case "Expert" -> {
+                switch (currentLevel) {
+                    case 1 -> loadAutosFromFile("expertLevel1.txt");
+                    case 2 -> loadAutosFromFile("expertLevel2.txt");
+                    case 3 -> loadAutosFromFile("expertLevel3.txt");
+                    default -> throw new RuntimeException("Invalid level selected");
+                }
             }
         }
     }
@@ -62,7 +72,7 @@ public class Game {
 
     private void loadAutosFromFile(String filename) {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream(filename);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
 
             if (is == null) {
                 throw new RuntimeException("File not found: " + filename);
@@ -144,11 +154,10 @@ public class Game {
 
     public boolean checkWin() {
         for (Auto auto : autos) {
-//            if (((ImageView)auto.getNode()).getImage().getUrl().endsWith("carh.png")) {
-                if (auto.getCarImage().getImage().getUrl().endsWith("carh.png")) {
+            if (auto.getCarImage().getImage().getUrl().endsWith("carh.png")) {
                 if (auto.getxPos() == 4 && auto.getyPos() == 2) {
                     HighScore highScore = new HighScore();
-                    highScore.writeScore(View.getSelectedDifficulty(), View.getChoiceBox().getValue(), getScore());
+                    highScore.writeScore(currentDifficulty, currentLevel, getScore());
                     return true;
                 }
             }

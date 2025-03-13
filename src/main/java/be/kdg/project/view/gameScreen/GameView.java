@@ -1,47 +1,32 @@
 package be.kdg.project.view.gameScreen;
 
 import be.kdg.project.model.Auto;
-import be.kdg.project.model.HighScore;
-import be.kdg.project.view.SceneManager;
-import be.kdg.project.view.beginScreen.View;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 import java.util.List;
 
 public class GameView extends VBox {
-    private final SceneManager sceneManager;
     private final GridPane speelveld;
     private final Button backButton;
     private final Label highScore;
     private final Label scoreLabel;
-    private final HighScore highScoreManager;
     private final HBox topBar;
-    private int currentScore;
 
-    public GameView(SceneManager sceneManager) {
-        this.sceneManager = sceneManager;
+    public GameView() {
         this.speelveld = createGrid();
-        this.highScoreManager = new HighScore();
-        this.currentScore = 0;
 
-        String currentDifficulty = View.getSelectedDifficulty();
-        int currentCard = View.getChoiceBox().getValue();
-        this.highScore = new Label("High Score: " + highScoreManager.getTopScore(currentDifficulty, currentCard));
-
+        // Initialize UI components without business logic
+        this.highScore = new Label("High Score: 0");
         this.scoreLabel = new Label("Score: 0");
-
         this.backButton = new Button("Quit");
-        this.backButton.setOnAction(e -> QuitPopup.display(sceneManager));
 
         this.topBar = new HBox(20);
         this.topBar.setAlignment(Pos.CENTER);
-        this.topBar.setPadding(new Insets(10));
+        this.topBar.setPadding(new Insets(40));
         this.topBar.getChildren().addAll(scoreLabel, highScore, backButton);
 
         setSpacing(10);
@@ -49,19 +34,18 @@ public class GameView extends VBox {
         setAlignment(Pos.CENTER);
     }
 
-    public void updateScore(int score) {
-        this.currentScore = score;
-        scoreLabel.setText("Score: " + score);
-        if (score > 0) {
-            String currentDifficulty = View.getSelectedDifficulty();
-            int currentCard = View.getChoiceBox().getValue();
-            highScoreManager.writeScore(currentDifficulty, currentCard, score);
-            highScore.setText("High Score: " + highScoreManager.getTopScore(currentDifficulty, currentCard));
-        }
+    // Method to set a reference to the presenter
+    public void setPresenter(GamePresenter presenter) {
+        this.setUserData(presenter);
     }
 
-    public void incrementScore(int points) {
-        updateScore(this.currentScore + points);
+    // Update UI methods - no business logic
+    public void updateScoreDisplay(int score) {
+        scoreLabel.setText("Score: " + score);
+    }
+
+    public void updateHighScoreDisplay(int highScoreValue) {
+        highScore.setText("High Score: " + highScoreValue);
     }
 
     private GridPane createGrid() {
@@ -70,8 +54,6 @@ public class GameView extends VBox {
         grid.setMaxWidth(300);
         grid.setStyle("-fx-border-color: black; -fx-background-color: lightgray; -fx-border-width: 2px;");
         grid.setGridLinesVisible(true);
-
-
 
         for (int i = 0; i < 6; i++) {
             grid.getColumnConstraints().add(new ColumnConstraints(50));
@@ -85,7 +67,6 @@ public class GameView extends VBox {
         for (Auto auto : autos) {
             plaatsAuto(auto);
         }
-
     }
 
     public void plaatsAuto(Auto auto) {
@@ -106,13 +87,5 @@ public class GameView extends VBox {
 
     public Label getScoreLabel() {
         return scoreLabel;
-    }
-
-    private void goToMenu() {
-        sceneManager.setScene(new Scene(new View(sceneManager), 800, 600));
-    }
-
-    public SceneManager getSceneManager() {
-        return sceneManager;
     }
 }

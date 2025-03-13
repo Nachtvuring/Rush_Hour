@@ -66,7 +66,7 @@ public class Auto {
         // Stack all components correctly
         this.clickableCar = new StackPane(frontClickArea, backClickArea, carImage);
         this.node = clickableCar;
-        
+
     }
 
     public void setOnMouseClicked(EventHandler<? super MouseEvent> eventHandler) {

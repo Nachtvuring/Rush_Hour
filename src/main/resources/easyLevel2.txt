@@ -4,6 +4,6 @@
 0,0,2,false,astoncarv.png
 5,0,3,false,camionv.png
 2,4,2,false,bluecarv.png
-3,5,3,true,greencarh.png
+3,5,3,true,camionh.png
 4,3,2,true,whitecarh.png
 

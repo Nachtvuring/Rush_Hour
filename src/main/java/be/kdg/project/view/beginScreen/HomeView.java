@@ -1,8 +1,9 @@
 package be.kdg.project.view.beginScreen;
 
-import be.kdg.project.view.SceneManager;
+import be.kdg.project.view.aboutScreen.AboutUsView;
 import be.kdg.project.view.gameScreen.GamePresenter;
 import be.kdg.project.view.gameScreen.GameView;
+import be.kdg.project.view.helpview.HelpView;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,8 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-public class View extends BorderPane {
-    private final SceneManager sceneManager;
+public class HomeView extends BorderPane {
     private static String selectedDifficulty = "Beginner";
     private static String playerName = "Player";
 
@@ -26,10 +26,11 @@ public class View extends BorderPane {
     private Button expertButton;
     private Button playButton;
     private TextField textField;
+    private Button aboutUsButton;
+    private Button helpButton;
     private static ChoiceBox<Integer> choiceBox;
 
-    public View(SceneManager sceneManager) {
-        this.sceneManager = sceneManager;
+    public HomeView() {
         this.setPadding(new Insets(10));
 
         Text text = new Text("Rush Hour");
@@ -50,7 +51,6 @@ public class View extends BorderPane {
         advancedButton = new Button("Advanced");
         expertButton = new Button("Expert");
         playButton = new Button("Play");
-        playButton.setOnAction(event -> startGame());
 
         choiceBox = new ChoiceBox<>();
         choiceBox.getItems().addAll(1, 2, 3);
@@ -63,11 +63,8 @@ public class View extends BorderPane {
         textBox.setAlignment(Pos.CENTER);
         textBox.setPadding(new Insets(200));
 
-        Button aboutUsButton = new Button("About Us");
-        Button helpButton = new Button("Help");
-
-        aboutUsButton.setOnAction(e -> sceneManager.setScene(new Scene(new AboutUsView(sceneManager), 800, 600)));
-        helpButton.setOnAction(e -> sceneManager.setScene(new Scene(new HelpView(sceneManager), 800, 600)));
+        aboutUsButton = new Button("About Us");
+        helpButton = new Button("Help");
 
         HBox topRightButtons = new HBox(10, aboutUsButton, helpButton);
         topRightButtons.setAlignment(Pos.TOP_RIGHT);
@@ -82,38 +79,22 @@ public class View extends BorderPane {
         String selectedStyle = "-fx-background-color: #4CAF50; -fx-text-fill: white;";
         String defaultStyle = "";
 
-        beginnerButton.setOnAction(e -> {
-            selectedDifficulty = "Beginner";
-            enableChoiceBox();
-            beginnerButton.setStyle(selectedStyle);
-            intermediateButton.setStyle(defaultStyle);
-            advancedButton.setStyle(defaultStyle);
-            expertButton.setStyle(defaultStyle);
-        });
-        intermediateButton.setOnAction(e -> {
-            selectedDifficulty = "Intermediate";
-            enableChoiceBox();
-            beginnerButton.setStyle(defaultStyle);
-            intermediateButton.setStyle(selectedStyle);
-            advancedButton.setStyle(defaultStyle);
-            expertButton.setStyle(defaultStyle);
-        });
-        advancedButton.setOnAction(e -> {
-            selectedDifficulty = "Advanced";
-            enableChoiceBox();
-            beginnerButton.setStyle(defaultStyle);
-            intermediateButton.setStyle(defaultStyle);
-            advancedButton.setStyle(selectedStyle);
-            expertButton.setStyle(defaultStyle);
-        });
-        expertButton.setOnAction(e -> {
-            selectedDifficulty = "Expert";
-            enableChoiceBox();
-            beginnerButton.setStyle(defaultStyle);
-            intermediateButton.setStyle(defaultStyle);
-            advancedButton.setStyle(defaultStyle);
-            expertButton.setStyle(selectedStyle);
-        });
+        beginnerButton.setStyle(selectedStyle);
+    }
+
+    public void setSelectedDifficulty(String difficulty) {
+        selectedDifficulty = difficulty;
+        enableChoiceBox();
+    }
+
+    public void updateDifficultyButtons() {
+        String selectedStyle = "-fx-background-color: #4CAF50; -fx-text-fill: white;";
+        String defaultStyle = "";
+
+        beginnerButton.setStyle(selectedDifficulty.equals("Beginner") ? selectedStyle : defaultStyle);
+        intermediateButton.setStyle(selectedDifficulty.equals("Intermediate") ? selectedStyle : defaultStyle);
+        advancedButton.setStyle(selectedDifficulty.equals("Advanced") ? selectedStyle : defaultStyle);
+        expertButton.setStyle(selectedDifficulty.equals("Expert") ? selectedStyle : defaultStyle);
     }
 
     private void enableChoiceBox() {
@@ -128,15 +109,31 @@ public class View extends BorderPane {
         return selectedDifficulty;
     }
 
-    private void startGame() {
-        GameView gameview = new GameView(sceneManager);
-        new GamePresenter(gameview);
-        Scene gameScene = new Scene(gameview, 800, 600);
-        sceneManager.setScene(gameScene);
+    public void startGame() {
+        GameView gameView = new GameView();
+        GamePresenter gamePresenter = new GamePresenter(gameView, selectedDifficulty, choiceBox.getValue());
+        this.getScene().setRoot(gameView);
+        gameView.getScene().getWindow().sizeToScene();
     }
 
     public Button getPlayButton() {
         return playButton;
+    }
+
+    public Button getBeginnerButton() {
+        return beginnerButton;
+    }
+
+    public Button getIntermediateButton() {
+        return intermediateButton;
+    }
+
+    public Button getAdvancedButton() {
+        return advancedButton;
+    }
+
+    public Button getExpertButton() {
+        return expertButton;
     }
 
     public static ChoiceBox<Integer> getChoiceBox() {
@@ -149,5 +146,13 @@ public class View extends BorderPane {
 
     public TextField getTextField() {
         return textField;
+    }
+
+    public Button getAboutUsButton() {
+        return aboutUsButton;
+    }
+
+    public Button getHelpButton() {
+        return helpButton;
     }
 }
