@@ -1,10 +1,10 @@
 # Intermediate Level 2
 
 2,2,2,true,/carh.png
-0,0,2,true,BLUE
-2,0,2,false,WHITE
-4,0,2,true,BROWN
-4,2,2,false,WHITE
-0,4,2,true,BLUE
-2,4,3,true,WHITE
-5,4,2,false,BLUE
+0,0,2,true,bluecarh.png
+2,0,2,false,whitecarv.png
+4,0,2,true,astoncarh.png
+4,2,2,false,whitecarv.png
+0,4,2,true,bluecarh.png
+2,4,3,true,camionh.png
+5,4,2,false,greencarv.png

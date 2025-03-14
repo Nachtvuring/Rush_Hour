@@ -44,12 +44,6 @@ public class GamePresenter {
     private void updateScore() {
         int currentScore = game.getScore();
         view.updateScoreDisplay(currentScore);
-
-        // Update high score if needed
-        if (currentScore > 0) {
-            highScoreManager.writeScore(currentDifficulty, currentLevel, currentScore);
-            updateHighScoreDisplay();
-        }
     }
 
     private void attachEventHandlers() {
@@ -97,6 +91,8 @@ public class GamePresenter {
             updateView();
 
             if (game.checkWin()) {
+                highScoreManager.writeScore(currentDifficulty, currentLevel, game.getScore());
+                updateHighScoreDisplay();
                 PopupWindow.showPopup("Congratulations!", String.valueOf(game.getScore()), view);
             }
         }
